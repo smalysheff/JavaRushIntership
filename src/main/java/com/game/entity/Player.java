@@ -1,6 +1,7 @@
 package com.game.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -19,7 +20,7 @@ public class Player {
     @Enumerated(EnumType.STRING)
     private Profession profession;
 
-    private Long birthday;
+    private Date birthday;
     private Boolean banned;
     private Integer experience;
     private Integer level;
@@ -33,7 +34,7 @@ public class Player {
                   String title,
                   Race race,
                   Profession profession,
-                  Long birthday,
+                  Date birthday,
                   Boolean banned,
                   Integer experience,
                   Integer level,
@@ -90,11 +91,11 @@ public class Player {
         this.profession = profession;
     }
 
-    public Long getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Long birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
