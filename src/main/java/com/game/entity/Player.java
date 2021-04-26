@@ -1,12 +1,24 @@
 package com.game.entity;
 
-public class Player {
+import javax.persistence.*;
+import java.util.Objects;
 
+@Entity
+@Table(name = "player")
+public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String title;
+
+    @Enumerated(EnumType.STRING)
     private Race race;
+
+    @Enumerated(EnumType.STRING)
     private Profession profession;
+
     private Long birthday;
     private Boolean banned;
     private Integer experience;
@@ -17,8 +29,16 @@ public class Player {
 
     }
 
-    public Player(Long id, String name, String title, Race race, Profession profession, Long birthday, Boolean banned, Integer experience, Integer level, Integer untilNextLevel) {
-        this.id = id;
+    public Player(String name,
+                  String title,
+                  Race race,
+                  Profession profession,
+                  Long birthday,
+                  Boolean banned,
+                  Integer experience,
+                  Integer level,
+                  Integer untilNextLevel) {
+
         this.name = name;
         this.title = title;
         this.race = race;
@@ -108,5 +128,27 @@ public class Player {
 
     public void setUntilNextLevel(Integer untilNextLevel) {
         this.untilNextLevel = untilNextLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return Objects.equals(id, player.id) &&
+                Objects.equals(name, player.name) &&
+                Objects.equals(title, player.title) &&
+                race == player.race &&
+                profession == player.profession &&
+                Objects.equals(birthday, player.birthday) &&
+                Objects.equals(banned, player.banned) &&
+                Objects.equals(experience, player.experience) &&
+                Objects.equals(level, player.level) &&
+                Objects.equals(untilNextLevel, player.untilNextLevel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, title, race, profession, birthday, banned, experience, level, untilNextLevel);
     }
 }
