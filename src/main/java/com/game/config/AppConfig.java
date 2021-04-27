@@ -47,7 +47,7 @@ public class AppConfig {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/rpg?serverTimezone=UTC&characterEncoding=UTF-8");
         dataSource.setUsername("root");
-        dataSource.setPassword("9874123");
+        dataSource.setPassword("root");
         return dataSource;
     }
 
@@ -79,7 +79,7 @@ public class AppConfig {
 
     private Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 
         return properties;
     }
